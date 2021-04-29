@@ -1,14 +1,16 @@
 class EventEmitter {
   constructor() {
       this.cache = {}
-  }
+    }
+    // 添加订阅者
   on(name, fn) {
       if (this.cache[name]) {
           this.cache[name].push(fn)
       } else {
           this.cache[name] = [fn]
       }
-  }
+    }
+    // 移除订阅
   off(name, fn) {
       let tasks = this.cache[name]
       if (tasks) {
@@ -17,7 +19,8 @@ class EventEmitter {
               tasks.splice(index, 1)
           }
       }
-  }
+    }
+    // 通知
   emit(name, once = false, ...args) {
       if (this.cache[name]) {
           // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
