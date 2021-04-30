@@ -44,4 +44,7 @@ var count = 0
 window.addEventListener('mousemove', debounce(function () {
   count++
   console.log(count);
-},1000,true))
+}, 1000, true))
+
+// 取消防抖
+// debounce(fn,wait,immediate).cancel()
